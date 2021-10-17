@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+		integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"
+		integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+		crossorigin="anonymous"></script>
+</head>
+
+<meta charset="UTF-8">
+<title>Cadastro de Professor</title>
+
+<body>
+
+	<div class="container">
+		<div class="panel-heading" align="center">
+			<strong> Cadastro de Professor </strong>
+		</div>
+
+		<div class="panel-body border">
+			<form class="form-horizontal" th:action="@{/prof/salvar}" th:object="${profNovo}" method="POST"
+				style="margin: 10px">
+				<div class="form-group">
+					<fieldset>
+						<div class="form-group row">
+							<div class="d-flex justify-content-around">
+								<div class="col-4">
+									<label>Nome do Professor</label>
+									<input type="text" th:field="*{nome}" class="form-control input-sm"
+										placeholder="Informe o nome do professor" maxlength="100" />
+								</div>
+								<div class="col-4">
+									<label>Sobrenome do Professor</label>
+									<input type="text" th:field="*{sobrenome}" class="form-control input-sm"
+										placeholder="Informe o sobrenome do professor" maxlength="200" />
+								</div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="d-flex justify-content-around">
+								<div class="col-4">
+									<label>Nome da disciplina</label>
+									<select class="form-control" th:field="*{disciplina}">
+										<option value="" hidden>Selecione a disciplina</option>
+										<option th:each="disciplina : ${discs}" th:value="${disciplina.id}" th:text="${disciplina.nome}"></option>
+									</select>
+								</div>
+								<div class="col-4">
+									<label>Nome do curso</label>
+									<select class="form-control" th:field="*{curso}">
+										<option value="" hidden>Selecione o curso</option>
+										<option th:each="curso : ${cursos}" th:value="${curso.id}" th:text="${curso.nome}"></option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+				</div>
+				<div align="center" class="my-1">
+					<button type="submit" class="btn btn-sm btn-success">Salvar</button>
+					<a th:href="@{/prof/listar}" class="btn btn-sm btn-default">Voltar</a>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>

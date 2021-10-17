@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+		integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"
+		integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+		crossorigin="anonymous"></script>
+</head>
+
+<meta charset="UTF-8">
+<title>Listagem de disciplinas</title>
+
+<body>
+
+	<div class="container">
+		<div class="panel-default">
+			<div class="text-center">
+				<h1 class="h4 mb-4">Listagem de disciplinas:</h1>
+			</div>
+			<div class="panel-body">
+				<div class="table-responsive">
+					<table class="table table-sm table-striped table-hover table-bordered">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Nome</th>
+								<th>Descrição</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="disc : ${discs}">
+								<td th:text="${disc.id}"></td>
+								<td th:text="${disc.nome}"></td>
+								<td th:text="${disc.descricao}"></td>
+								<td>
+									<div class="btn-group pull-right">
+										<a class="btn btn-sm btn-primary" th:href="@{/disc/alterar/{idDisc}(idDisc=${disc.id})}">Alterar</a>
+										<a class="btn btn-sm btn-danger" th:href="@{/disc/excluir/{idDisc}(idDisc=${disc.id})}">Excluir</a>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<a class="btn btn-sm btn-success" th:href="@{/disc/cadastrar}">Cadastrar</a>
+	</div>
+
+</body>
+
+</html>
