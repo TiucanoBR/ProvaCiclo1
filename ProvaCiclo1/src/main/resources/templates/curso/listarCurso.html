@@ -30,6 +30,7 @@
 								<th>ID</th>
 								<th>Nome</th>
 								<th>Descrição</th>
+								<th>Professor(es)</th>
 								<th></th>
 							</tr>
 						</thead>
@@ -38,6 +39,7 @@
 								<td th:text="${curso.id}"></td>
 								<td th:text="${curso.nome}"></td>
 								<td th:text="${curso.descricao}"></td>
+								<td><span th:each="prof: ${curso.profs}" th:text="${prof.nome + ' | '}"></span></td>
 								<td>
 									<div class="btn-group pull-right">
 										<a class="btn btn-sm btn-primary" th:href="@{/curso/alterar/{idCurso}(idCurso=${curso.id})}">Alterar</a>

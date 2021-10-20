@@ -34,6 +34,7 @@ public class CursoController {
 	public ModelAndView cadastrarCurso() {
 		ModelAndView mv = new ModelAndView("curso/cadastrarCurso");
 		mv.addObject("cursoNovo", new Curso());
+		mv.addObject("profs", profService.buscarTodosProfessores());
 		return mv;
 	}
 	
@@ -47,6 +48,7 @@ public class CursoController {
 	public ModelAndView alterar(@PathVariable("id") Integer id) throws ObjectNotFoundException {
 		ModelAndView mv = new ModelAndView("curso/alterarCurso");
 		mv.addObject("curso", service.buscarPorId(id));
+		mv.addObject("profs", profService.buscarTodosProfessores());
 		return mv;
 	}
 	

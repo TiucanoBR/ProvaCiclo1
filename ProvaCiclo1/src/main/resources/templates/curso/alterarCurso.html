@@ -50,6 +50,17 @@
 								</div>
 							</div>
 						</div>
+						<div class="form-group row">
+							<div class="d-flex justify-content-around">
+								<div class="col-4">
+									<label>Professores: </label>
+									<div th:each="prof : ${profs}">
+										<input type="checkbox" th:field="*{profs}" th:value="${prof.id}"/>
+										<label th:text="${prof.nome}"></label>
+									</div>
+								</div>
+							</div>
+						</div>
 					</fieldset>
 				</div>
 				<div align="center" class="my-1">

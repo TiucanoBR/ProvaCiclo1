@@ -1,11 +1,13 @@
 package br.com.senac.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Curso implements Serializable{
@@ -23,6 +25,17 @@ public class Curso implements Serializable{
 	private String nome;
 	
 	private String descricao;
+	
+	@OneToMany
+	private List<Professor> profs;
+
+	public List<Professor> getProfs() {
+		return profs;
+	}
+
+	public void setProfs(List<Professor> profs) {
+		this.profs = profs;
+	}
 
 	public Integer getId() {
 		return id;

@@ -37,6 +37,7 @@ public class CursoService {
 		Curso cursoAtual = buscarPorId(cursoAlterado.getId());
 		cursoAtual.setNome(cursoAlterado.getNome());
 		cursoAtual.setDescricao(cursoAlterado.getDescricao());
+		cursoAtual.setProfs(cursoAlterado.getProfs());
 		return salvar(cursoAtual);
 	}
 	
